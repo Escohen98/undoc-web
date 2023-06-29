@@ -40,3 +40,43 @@ img {
 }
 
 /* Language Highlighting */
+/* Glossary: https://stackoverflow.com/questions/15388831/what-are-all-possible-pos-tags-of-nltk */
+
+
+/* Language Highlighting */
+/* Glossary: https://stackoverflow.com/questions/15388831/what-are-all-possible-pos-tags-of-nltk */
+
+/* Yellow */
+.CC, .LS, .MD, .RP, .TO {
+  color: yellow;
+}
+
+/* Purple */
+.CD, .PRP, .PRP$, .WP {
+  color: purple;
+}
+
+/* Orange */
+.DT, .PDT, .POS, .WDT {
+  color: orange;
+}
+
+/* Pink */
+.EX, .UH {
+  color: pink;
+}
+
+/* Red */
+.JJ, .JJR, .JJS, .RB, .RBR, .RBS, .WRB {
+  color: red;
+}
+
+/* Blue */
+.NN, .NNP, .NNS {
+  color: blue;
+}
+
+/* Green */
+.VB, .VBD, .VBG, .VBN, .VBP, .VBZ {
+  color: green;
+}
