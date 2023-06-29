@@ -1,0 +1,26 @@
+<!--
+Copyright © Eric Cohen 2023
+This page displays the file text and provides option to download.
+-->
+<!DOCTYPE HTML>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOCX -> TXT</title>
+  <link rel="icon" href="../static/images/gambling.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/index.css">
+</head>
+<body>
+  <header>
+    <h1>Oh your god, look, it's the file!!!!</h1>
+    <div class="text-frame">
+      {{% for line in file %}}
+      <p class="line">{{line}}</p>
+      {{%endfor%}}
+    </div>
+    <!-- TODO: -->
+    <form method = "post" enctype="multitype/form-data">
+      <input type = "submit" value="download">
+    </form>
+</body>

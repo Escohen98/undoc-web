@@ -1,1 +1,29 @@
+<!--
+Copyright © Eric Cohen 2023
+Web application to convert docx to txt. A lot of these already exist,
+this just happens to be a worse version of those. *Cheers*
+-->
 <!DOCTYPE HTML>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOCX -> TXT</title>
+  <link rel="icon" href="../static/images/gambling.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../static/index.css">
+</head>
+<body>
+  <!--
+  Basic file upload from: https://www.geeksforgeeks.org/how-to-upload-file-in-python-flask/
+-->
+  <header>
+    <h1> We get your DOCX. You get a TXT.</h1>
+    <h2> Please select the file you would like to convert</h2>
+  </header>
+  <main>
+    <form action = "/uploaded" method = "post" enctype="multipart/form-data">
+      <input type="file" accept=".docx, .doc" name="file-txt" />
+      <input type = "submit" value="upload">
+    </form>
+  </main>
+</body>
