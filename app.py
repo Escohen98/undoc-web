@@ -12,18 +12,18 @@ def home():
 #Also going to display file on webpage.
 @app.route('/uploaded', methods=['POST'])
 def uploaded():
-    lines = [] #Imagine storing an entire text document in an array
     if request.method == 'POST':
         f=request.files['file-txt']
-        save(f.filename)
-        c = converter().run(f.filename)
-        content = f.read() # Reads the entire content of the file
-        f.seek(0)  # Reset file pointer to the beginning
-        for line in f:
-            line = line.decode("utf-8")  # Decode bytes to string
-            lines.append(line)  # Or process the line however you need
-        converter().delFile(f.filename)
+        f.save(f.filename)
+        c = converter().run(f.filename)  # Get the path of the converted text file
+        print("Working...")
+        lines = []  # Initialize lines
+        with open(c, 'r') as file:  # Open the converted text file
+            print(".")
+            lines = file.readlines()  # Read lines from the converted text file
+        converter().delFile(c)  # Delete the converted text file
     return render_template('./uploaded.html', file=lines)
+
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337, debug=True)

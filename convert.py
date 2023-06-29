@@ -17,7 +17,7 @@ class converter():
             print("Invalid file. Please choose an existing 'doc' or 'docx' file.")
             handler.invalidfile()
 
-        return self.docToTxt(self, filename)
+        return self.docToTxt(filename)
 
 
     #Creates zip object from word document
@@ -44,6 +44,6 @@ class converter():
             return file
                     #p = subprocess.Popen(["notepad.exe", file])
 
-    #Helper function to delete file. 
+    #Helper function to delete file.
     def delFile(self, filename):
         os.remove(filename)
