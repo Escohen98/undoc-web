@@ -1,3 +1,7 @@
+#Page handler. Upload a docx file, convert to txt
+#and highlight based on grammar!!!
+#Copyright © Eric Cohen 2023
+
 from flask import Flask, render_template, request, url_for, redirect, send_from_directory
 from distutils.log import debug
 from fileinput import filename
