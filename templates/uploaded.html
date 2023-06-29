@@ -13,19 +13,18 @@ This page displays the file text and provides option to download.
 </head>
 <body>
   <header>
+    <img src="https://www.pinclipart.com/picdir/middle/35-355669_convert-hub-is-a-free-online-image-converter.png" />
     <h1>Oh your god, look, it's the file!!!!</h1>
   </header>
   <main>
-    <!-- TODO: -->
-    <a href="{{ url_for('download', filename=filename) }}">
+    <a class="download-button" href="{{ url_for('download', filename=filename) }}">
       <button type="button" class="btn btn-info">Download file</button>
     </a>
     <div class="rounded border-warning text-frame">
       {%for line in file%}
-      <pre class="line">{{line|escape}}</pre>
+      <pre class="line">{{line|safe}}</pre>
       {%endfor%}
     </div>
   </main>
-    <!-- TODO: -->
 
 </body>

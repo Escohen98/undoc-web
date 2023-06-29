@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, url_for, redirect, send_from_
 from distutils.log import debug
 from fileinput import filename
 from convert import converter
+from nlp import natty
 import os
 app = Flask(__name__)
 
@@ -22,8 +23,9 @@ def uploaded():
         print("saved.")
         c = converter().run(filepath)  # Get the path of the converted text file
         lines = []  # Initialize lines
+        #Grammar tokenization & highlighting
         with open(c, 'r') as file:  # Open the converted text file
-            lines = [line.rstrip() for line in file if line.strip()]  # Read lines from the converted text file. Strips new line char
+             lines = [natty().run(line.rstrip()) for line in file if line.strip()] # Read lines from the converted text file. Strips new line char
         #converter().delFile(c)  # Delete the converted text file
         #converter().delFile(f.filename) # Deleted the original doc(x) file.
         print("filename: " + c)

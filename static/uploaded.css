@@ -2,6 +2,27 @@ main {
   margin: 25px 0;
 }
 
+header {
+  display: flex;
+  flex-direction: row;
+}
+
+h1 {
+  background-color: gold;
+  border-bottom: dotted black 2px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+}
+
+img {
+  height: 50px;
+}
+
+.download-button {
+  display: inline-block;
+  margin: 30px, 30px, auto, auto;
+}
+
 .text-frame {
   margin: 50px auto;
   border-width: 5px;
@@ -15,4 +36,7 @@ main {
   border-bottom: solid rgba(255,0,0,40%) 1px;
   word-wrap: break-word;
   overflow-wrap: break-word;
+  padding-left: 10px;
 }
+
+/* Language Highlighting */
