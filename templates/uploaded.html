@@ -10,13 +10,28 @@ This page displays the file text and provides option to download.
   <link rel="icon" href="../static/images/convert.ico">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="../static/uploaded.css">
+  <script src="../static/uploaded.js"></script>
 </head>
 <body>
   <header>
     <!--<img src="https://www.pinclipart.com/picdir/middle/35-355669_convert-hub-is-a-free-online-image-converter.png" />-->
     <h1><img src="https://www.pinclipart.com/picdir/middle/35-355669_convert-hub-is-a-free-online-image-converter.png" /> The File has been converted and grammatically highlighted for your convenience.</h1>
+    <button id="key-button" class="btn btn-info" type="button">Key</button>
   </header>
   <main>
+    <div id="keys" hidden>
+      <h3><b>Key</b></h3>
+      <ul id="key">
+        <li id="blue">Blue: Nouns</li>
+        <li id="green">Green: Verbs</li>
+        <li id="red">Red: Adjectives, Adverbs</li>
+        <li id="purple">Purple: Numerals, Pronouns</li>
+        <li id="yellow">Yellow: Conjunctions, Modals, Particles</li>
+        <li id="pink">Pink: Expletives, Interjections</li>
+        <li id="orange">Orange: Determiners</li>
+      </ul>
+    </div>
+
     <a class="download-button" href="{{ url_for('download', filename=filename) }}">
       <button type="button" class="btn btn-info">Download file</button>
     </a>

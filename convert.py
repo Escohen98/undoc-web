@@ -23,6 +23,8 @@ class converter():
     #Creates zip object from word document
     #Pulls and formats xml
     #Extracts text from XML and parses to text document.
+    #Adapted from my previous project
+    #https://github.com/escohen98/undoc
     def docToTxt(self, folder):
         #Reading lines. Efficient?
         doc = zipfile.ZipFile(folder + ".docx")

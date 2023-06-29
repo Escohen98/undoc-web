@@ -1,3 +1,6 @@
+body {
+  z-index: 1;
+}
 main {
   margin: 25px 0;
 }
@@ -18,6 +21,7 @@ img {
   height: 50px;
 }
 
+/* Why won't this move? */
 .download-button {
   display: inline-block;
   margin: 30px, 30px, auto, auto;
@@ -39,44 +43,66 @@ img {
   padding-left: 10px;
 }
 
+#keys {
+  background-color: grey;
+  border: solid black 1px;
+  width: 30%;
+  z-index: 2;
+  position: fixed;
+  bottom: 50%;
+  right: 0;
+  float: right;
+}
+
+#keys > ul {
+  font-size: 12px;
+}
+
+#key-button {
+  width: 150px;
+  height: 105px;
+  z-index: 2;
+  position: relative;
+}
+
+#key-button:hover {
+  color: white;
+}
+
 /* Language Highlighting */
 /* Glossary: https://stackoverflow.com/questions/15388831/what-are-all-possible-pos-tags-of-nltk */
 
-
-/* Language Highlighting */
-/* Glossary: https://stackoverflow.com/questions/15388831/what-are-all-possible-pos-tags-of-nltk */
-
-/* Yellow */
-.CC, .LS, .MD, .RP, .TO {
+/* Conjunctions, Modals, Particles */
+.CC, .LS, .MD, .RP, .TO, #yellow {
   color: yellow;
 }
 
-/* Purple */
-.CD, .PRP, .PRP$, .WP {
+/* Numerals, Pronouns */
+.CD, .PRP, .PRP$, .WP, #purple {
   color: purple;
 }
 
-/* Orange */
-.DT, .PDT, .POS, .WDT {
+/* Determiners */
+.DT, .PDT, .POS, .WDT, #orange {
   color: orange;
 }
 
-/* Pink */
-.EX, .UH {
+/* Expletives, Interjections */
+.EX, .UH, #pink {
   color: pink;
 }
 
-/* Red */
-.JJ, .JJR, .JJS, .RB, .RBR, .RBS, .WRB {
+/* Adjectives, Adverbs */
+.JJ, .JJR, .JJS, .RB, .RBR, .RBS, .WRB, #red {
   color: red;
 }
 
-/* Blue */
-.NN, .NNP, .NNS {
+/* Nouns */
+.NN, .NNP, .NNS, #blue {
   color: blue;
 }
 
-/* Green */
-.VB, .VBD, .VBG, .VBN, .VBP, .VBZ {
+/* Verbs */
+.VB, .VBD, .VBG, .VBN, .VBP, .VBZ, #green {
   color: green;
 }
