@@ -13,4 +13,5 @@ pip3 install bs4
 pip3 install file_handler
 pip3 install lxml
 pip3 install click (if not already exists)
-pip3 install README.md
+pip3 install nltk
+pip3 install celery

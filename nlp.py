@@ -32,12 +32,9 @@ class natty():
         line = ""
         for span in arr:
             line += span + " "
-        print("---------------------------")
-        print(line.strip())
         return line.strip()
 
     #Puts all of 'em together
     def run(self,text):
         result = self.combineSpans(self.buildHTML(self.tokenizeText(text)))
-        print(result)
         return result

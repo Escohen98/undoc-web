@@ -8,8 +8,10 @@ from fileinput import filename
 from convert import converter
 from nlp import natty
 import os
-app = Flask(__name__)
 
+app = Flask(__name__)
+docx_name = ""
+txt_name = ""
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('./home.html')
@@ -32,9 +34,11 @@ def uploaded():
              lines = [natty().run(line.rstrip()) for line in file if line.strip()] # Read lines from the converted text file. Strips new line char
         #converter().delFile(c)  # Delete the converted text file
         #converter().delFile(f.filename) # Deleted the original doc(x) file.
-        print("filename: " + c)
+        txt_name = c
+        print("txt filename: " + c)
         filename = c.split("\\")[len(c.split("\\"))-1]
-        print("ne filename: " + filename)
+        print("docx filename: " + filename)
+        docx_name = filename
         response = render_template('./uploaded.html', file=lines, filename=filename)
     return response
 
@@ -46,3 +50,24 @@ def download(filename):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337, debug=True)
+
+
+#---------------------- Celery --------------------#
+
+from celery import Celery
+cApp = Celery('tasks', include=['tasks'])
+
+#Monitors activity for file deletion
+#Defines activity time and time threshold for user activity
+@cApp.task
+def monitor_user_activity():
+    last_activity_time = get_last_activity_time()
+    current_time = get_current_time()
+    idle_threshold = 30  # Define the idle threshold in seconds (e.g., 5 minutes)
+
+    if current_time - last_activity_time > idle_threshold:
+        path = '../static/downloads/'
+        if (docx_name != ""):
+            converter().delFile(path + docx_name)  # Implement this function to delete the file
+        if (txt_name != ""):
+            converter.delFile(path + txt_name)
