@@ -17,9 +17,9 @@ This page displays the file text and provides option to download.
   </header>
   <main>
     <!-- TODO: -->
-    <form method = "post" enctype="multitype/form-data">
-      <input type = "submit" value="download">
-    </form>
+    <a href="{{ url_for('download', filename=filename) }}">
+      <button type="button" class="btn btn-info">Download file</button>
+    </a>
     <div class="rounded border-warning text-frame">
       {%for line in file%}
       <pre class="line">{{line|escape}}</pre>
