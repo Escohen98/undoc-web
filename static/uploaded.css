@@ -1,0 +1,17 @@
+main {
+  margin: 25px 0;
+}
+
+.text-frame {
+  margin: 50px auto;
+  border-width: 5px;
+  max-width: 80%;
+  padding-top: 10px;
+  background-color: rgba(128,128,128, 50%)
+}
+
+.line {
+  border-bottom: solid rgba(255,0,0,40%) 1px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

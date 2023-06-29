@@ -13,16 +13,20 @@ def home():
 @app.route('/uploaded', methods=['POST'])
 def uploaded():
     if request.method == 'POST':
+        print("Post request")
         f=request.files['file-txt']
+        print("saving...")
         f.save(f.filename)
+        print("saved.")
         c = converter().run(f.filename)  # Get the path of the converted text file
         print("Working...")
         lines = []  # Initialize lines
         with open(c, 'r') as file:  # Open the converted text file
-            print(".")
-            lines = file.readlines()  # Read lines from the converted text file
+            lines = [line.rstrip() for line in file if line.strip()]  # Read lines from the converted text file. Strips new line char
         converter().delFile(c)  # Delete the converted text file
-    return render_template('./uploaded.html', file=lines)
+        converter().delFile(f.filename) # Deleted the original doc(x) file.
+        response = render_template('./uploaded.html', file=lines)
+    return response
 
 
 if __name__ == "__main__":

@@ -16,7 +16,7 @@ class converter():
         if (not ((extension == "docx" or extension == "doc") and os.path.isfile(file))):
             print("Invalid file. Please choose an existing 'doc' or 'docx' file.")
             handler.invalidfile()
-
+        print("ran")
         return self.docToTxt(filename)
 
 
@@ -35,12 +35,16 @@ class converter():
 
         #Used to have an overwrite handler, but doesn't matter now
         #File is getting deleted later anyway.
-        g = open(folder, 'w')
+        g = open(folder + '.txt', 'w')
         for t in text: #XML is one line, but just to be safe..
             g.write(t.text)
         g.close()
+
         file = folder + ".txt"
-        if (handler.finished(file)):
+        file_exists = os.path.isfile(file)
+
+        if file_exists:
+            print("returning...")
             return file
                     #p = subprocess.Popen(["notepad.exe", file])
 
