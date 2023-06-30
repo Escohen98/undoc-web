@@ -8,7 +8,8 @@
 
   //Initializes key button
   function initialize() {
-    document.getElementById("key-button").addEventListener("click", toggleKey);
+    document.getElementById("key-button").addEventListener("mouseover", toggleKey);
+    document.getElementById("key-button").addEventListener("mouseout", toggleKey);
     buildToolTip()
   }
 

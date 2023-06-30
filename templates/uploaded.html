@@ -36,7 +36,7 @@ This page displays the file text and provides option to download.
       <button type="button" class="btn btn-info">Download file</button>
     </a>
     <div class="rounded border-warning text-frame">
-          <h3>{{fileName}}</h3>
+          <h3 id="file-name">{{fileName}}</h3>
       {%for line in file%}
       <pre class="line">{{line|safe}}</pre>
       {%endfor%}

@@ -1,5 +1,9 @@
 body {
   z-index: 1;
+  /*
+  background-image: url("https://wallpapercave.com/wp/24Zv4Fy.jpg");
+  background-size: cover;
+  */
 }
 main {
   margin: 25px 0;
@@ -24,10 +28,6 @@ h2, h3 {
 h3 {
   border-bottom: solid black 1px;
   padding-bottom: 10px;
-  background-image: linear-gradient(to bottom right, red, blue);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
 }
 
 img {
@@ -86,6 +86,13 @@ img:hover {
 
 #key-button:hover {
   color: white;
+}
+
+#file-name {
+  background-image: linear-gradient(to bottom right, red, blue);
+  /*Creates a gradient masking */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Language Highlighting */
