@@ -3,7 +3,6 @@ import zipfile
 import subprocess
 import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
-from file_handler import handler
 
 #Converts word document to text
 #Taken from https://python.plainenglish.io/how-to-read-docx-files-with-python-b2ec17bcb277
