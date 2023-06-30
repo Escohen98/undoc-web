@@ -1,12 +1,36 @@
+body {
+    background-image: url("https://www.pixelstalk.net/wp-content/uploads/2016/05/Awesome-Really-Cool-Background.jpg");
+    background-size: cover;
+}
 main {
   margin-top: 100px;
   margin-left: 50px;
+}
+
+header {
+  text-align: center;
+  background-color: gold;
+  border-bottom: dotted black 2px;
 }
 
 form {
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
+  border: inset black 1px;
+  width: 300px;
+  height: 300px;
+  margin-left: 30%;
+  padding: 5px 0;
+  background-color: purple;
+  border-radius: 50%;
+  opacity: .6;
+}
+
+form:hover {
+  opacity: .9;
+  background-color: white
 }
 
 .browse {
