@@ -1,4 +1,5 @@
 Copyright © Eric Cohen 2023
+![HackMD](https://hackmd.io/oekEl2Q3T1-Cir-WtcJVTAhttps://hackmd.io/oekEl2Q3T1-Cir-WtcJVTA)
 
 #Description
 A Docx -> TXT converter while implementing NLP to grammatically categorize the text and identify and visualize through colors and tooltips what type of grammatical category the word falls under.
@@ -18,5 +19,3 @@ pip3 install lxml
 pip3 install click (if not already exists)
 pip3 install nltk
 pip3 install celery
-
-![HackMD](https://hackmd.io/oekEl2Q3T1-Cir-WtcJVTAhttps://hackmd.io/oekEl2Q3T1-Cir-WtcJVTA)
