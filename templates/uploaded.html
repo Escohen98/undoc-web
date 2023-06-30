@@ -31,11 +31,12 @@ This page displays the file text and provides option to download.
         <li id="orange">Orange: Determiners</li>
       </ul>
     </div>
-
+    <h2>Hover over a word!</h2>
     <a class="download-button" href="{{ url_for('download', filename=filename) }}">
       <button type="button" class="btn btn-info">Download file</button>
     </a>
     <div class="rounded border-warning text-frame">
+          <h3>{{fileName}}</h3>
       {%for line in file%}
       <pre class="line">{{line|safe}}</pre>
       {%endfor%}

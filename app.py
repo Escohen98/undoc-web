@@ -11,7 +11,7 @@ from nlp import natty
 import os
 
 app = Flask(__name__)
-sslify = SSLify(app) #Redirects http to https
+sslify = SSLify(app) #Redirects http to https. Apparently doesn't work.
 docx_name = ""
 txt_name = ""
 @app.route('/', methods=['GET', 'POST'])
@@ -41,7 +41,7 @@ def uploaded():
         filename = c.split("\\")[len(c.split("\\"))-1]
         print("docx filename: " + filename)
         docx_name = filename
-        response = render_template('./uploaded.html', file=lines, filename=filename)
+        response = render_template('./uploaded.html', file=lines, filename=filename, fileName=filename)
     return response
 
 #File download handler
