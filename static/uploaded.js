@@ -28,10 +28,9 @@
   }
 
   //Found this online. Lost the link.
-  //Creates a tooltip for the spans 
+  //Creates a tooltip for the spans
   function buildToolTip() {
     var spans = document.getElementsByTagName('span');
-    // Create a div to use as a tooltip
     var tooltip = document.createElement('div');
     tooltip.style.display = 'none';
     tooltip.style.position = 'fixed';
@@ -41,31 +40,29 @@
     tooltip.style.zIndex = '1000';
     document.body.appendChild(tooltip);
 
-    // Iterate over each span
     for(var i=0; i<spans.length; i++) {
-      // Add a mouseover event listener to each span
-      spans[i].addEventListener('mouseover', function(event) {
-          // Get the tag from the class name
-          var tag = this.className;
+        spans[i].addEventListener('mouseover', function(event) {
+            var tag = this.className;
+            var description = getDescription(tag);
+            tooltip.innerHTML = this.innerHTML + ': ' + description;
+            tooltip.style.display = 'block';
+            // The following two lines have been commented out
+            //tooltip.style.left = (event.pageX + this.offsetWidth) + 'px';
+            //tooltip.style.top = (event.pageY + this.offsetHeight) + 'px';
+        });
 
-          // Construct the tooltip text with a switch statement
-          var description = getDescription(tag);
+        // Add mousemove event listener to each span
+        spans[i].addEventListener('mousemove', function(event) {
+            // Position the tooltip
+            tooltip.style.left = (event.pageX + 10) + 'px';
+            tooltip.style.top = (event.pageY + 10) + 'px';
+        });
 
-          // Set the tooltip text
-          tooltip.innerHTML = this.innerHTML + ': ' + description;
-
-          // Position the tooltip
-          tooltip.style.left = (event.pageX + 20) + 'px';
-          tooltip.style.top = (event.pageY + 20) + 'px';
-
-          // Show the tooltip
-          tooltip.style.display = 'block';
-      });
-      spans[i].addEventListener('mouseout', function(event) {
-          tooltip.style.display = 'none';
-      });
+        spans[i].addEventListener('mouseout', function(event) {
+            tooltip.style.display = 'none';
+        });
     }
-  }
+}
 
   /*
    * Get each word description.

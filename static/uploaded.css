@@ -21,6 +21,10 @@ img {
   height: 50px;
 }
 
+img:hover {
+  border: solid white 2px;
+}
+
 /* Why won't this move? */
 .download-button {
   display: inline-block;
@@ -41,6 +45,7 @@ img {
   word-wrap: break-word;
   overflow-wrap: break-word;
   padding-left: 10px;
+  padding-bottom: 5px;
 }
 
 #keys {
