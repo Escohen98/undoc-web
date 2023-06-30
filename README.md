@@ -1,6 +1,8 @@
 Copyright © Eric Cohen 2023
 ![HackMD](https://hackmd.io/oekEl2Q3T1-Cir-WtcJVTAhttps://hackmd.io/oekEl2Q3T1-Cir-WtcJVTA)
 
+![Weblink](http://docxtotxt.net)
+
 # Description
 A Docx -> TXT converter while implementing NLP to grammatically categorize the text and identify and visualize through colors and tooltips what type of grammatical category the word falls under.
 
@@ -13,6 +15,7 @@ A Docx -> TXT converter while implementing NLP to grammatically categorize the t
 
 # Dependencies
 * pip3 install flask
+* pip3 install Flask_SSLify
 * pip3 install bs4
 * pip3 install file_handler
 * pip3 install lxml

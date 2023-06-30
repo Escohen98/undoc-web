@@ -3,6 +3,7 @@
 #Copyright © Eric Cohen 2023
 
 from flask import Flask, render_template, request, url_for, redirect, send_from_directory
+from flask_sslify import SSLify
 from distutils.log import debug
 from fileinput import filename
 from convert import converter
@@ -10,6 +11,7 @@ from nlp import natty
 import os
 
 app = Flask(__name__)
+sslify = SSLify(app) #Redirects http to https
 docx_name = ""
 txt_name = ""
 @app.route('/', methods=['GET', 'POST'])
