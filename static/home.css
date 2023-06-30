@@ -5,6 +5,9 @@ body {
 main {
   margin-top: 100px;
   margin-left: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 header {
@@ -21,7 +24,6 @@ form {
   border: inset black 1px;
   width: 300px;
   height: 300px;
-  margin-left: 30%;
   padding: 5px 0;
   background-color: purple;
   border-radius: 50%;
