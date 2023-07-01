@@ -16,16 +16,12 @@
   /*
    * Toggles the key's hidden state
    * I know there's a toggle function, but I can't find it,
-   * so I'm going to use an if statement
+   * so I'm going to use reverse logic
    */
   function toggleKey() {
     //Key div
     key = document.getElementById("keys");
-    if (key.hidden) {
-        key.hidden = false;
-    } else {
-      key.hidden = true;
-    }
+    key.hidden = !key.hidden
   }
 
   //Found this online. Lost the link.
