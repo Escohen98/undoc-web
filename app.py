@@ -47,6 +47,10 @@ def uploaded():
 #File download handler
 @app.route('/download/<filename>')
 def download(filename):
+    if filename.__contains__("//"):
+        filename = filename.split("//")[len(filename.split("//"))-1]
+    elif filename.__contains__("\\"):
+        filename.split("\\")[len(filename.split("\\"))-1]
     print(f'Attempting to send: {filename}')
     return send_from_directory(directory='static/downloads/', path=filename, as_attachment=True)
 
