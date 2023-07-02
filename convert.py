@@ -50,5 +50,5 @@ class converter():
                     #p = subprocess.Popen(["notepad.exe", file])
 
     #Helper function to delete file.
-    def delFile(self, filename):
-        os.remove(filename)
+    def delFile(self, path):
+        os.remove(path)

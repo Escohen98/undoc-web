@@ -8,7 +8,7 @@ from distutils.log import debug
 from fileinput import filename
 from convert import converter
 from nlp import natty
-import os
+import os, platform
 
 app = Flask(__name__)
 sslify = SSLify(app) #Redirects http to https. Apparently doesn't work.
@@ -26,6 +26,7 @@ def uploaded():
         print("Post request")
         f=request.files['file-txt']
         filepath = os.path.join('static', 'downloads', f.filename)
+        print("original filename: " + f.filename)
         print("saving...")
         f.save(filepath)
         print("saved.")
@@ -35,13 +36,15 @@ def uploaded():
         with open(c, 'r') as file:  # Open the converted text file
              lines = [natty().run(line.rstrip()) for line in file if line.strip()] # Read lines from the converted text file. Strips new line char
         #converter().delFile(c)  # Delete the converted text file
-        #converter().delFile(f.filename) # Deleted the original doc(x) file.
+        # # Deleted the original doc(x) file.
         txt_name = c
         print("txt filename: " + c)
-        filename = c.split("\\")[len(c.split("\\"))-1]
-        print("docx filename: " + filename)
-        docx_name = filename
+        #filename = c.split("\\")[len(c.split("\\"))-1]
+        print("docx filename: " + f.filename)
+        docx_name = f.filename
         response = render_template('./uploaded.html', file=lines, filename=filename, fileName=filename)
+        #filepath = "/static/download/"+f.filename
+        converter().delFile(filepath)
     return response
 
 #File download handler
@@ -70,7 +73,7 @@ def monitor_user_activity():
     last_activity_time = get_last_activity_time()
     current_time = get_current_time()
     idle_threshold = 30  # Define the idle threshold in seconds (e.g., 5 minutes)
-
+    print('Deleting' + docx_name + '...')
     if current_time - last_activity_time > idle_threshold:
         path = '../static/downloads/'
         if (docx_name != ""):
