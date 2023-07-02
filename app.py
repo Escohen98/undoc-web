@@ -37,11 +37,14 @@ def uploaded():
              lines = [natty().run(line.rstrip()) for line in file if line.strip()] # Read lines from the converted text file. Strips new line char
         #converter().delFile(c)  # Delete the converted text file
         # # Deleted the original doc(x) file.
-        txt_name = c
+        if platform.system() == "Windows":
+            filename = c.split("\\")[len(c.split("\\"))-1]
+        else:
+            filename = c.split("/")[len(c.split("/"))-1]
         print("txt filename: " + c)
-        #filename = c.split("\\")[len(c.split("\\"))-1]
+        txt_name = filename #For celery. May remove later
         print("docx filename: " + f.filename)
-        docx_name = f.filename
+        docx_name = f.filename #Also for celery. May also remove later.
         response = render_template('./uploaded.html', file=lines, filename=filename, fileName=filename)
         #filepath = "/static/download/"+f.filename
         converter().delFile(filepath)
