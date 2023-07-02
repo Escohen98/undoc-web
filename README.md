@@ -11,7 +11,9 @@ A Docx -> TXT converter while implementing NLP to grammatically categorize the t
     2. Install dependencies (see below)
     3. Navigate to the working directory
     4. Run the dang program (python3 app.py)
-    5. Connect to your server (localhost:1337)
+    5. Connect to your server (localhost)
+    6. Optional: Create an HTTPs certificate (port 443)
+
 
 # Dependencies
 * pip3 install flask
@@ -21,4 +23,6 @@ A Docx -> TXT converter while implementing NLP to grammatically categorize the t
 * pip3 install lxml
 * pip3 install click (if not already exists)
 * pip3 install nltk
-* pip3 install celery
+
+#SSL Certificate
+`openssl req -x509 -newkey rsa:4096 -nodes -out cert.pem -keyout key.pem -days 365`
