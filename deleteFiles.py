@@ -6,31 +6,28 @@ import os, shutil, time
 
 def main():
     deleted_files_count = 0
-    path = os.getcwd() + "/static/downloads"
-
-    #3 hours
-    days = 0.125
+    path = "./static/downloads/"
 
     # converting days to seconds
     # time.time() is in seconds
     # Could change days to hours and not multiply by 24, but eh
-    #seconds = time.time() - (days * 24 * 60 * 60)
-    seconds = time.time() - 30 #Testing purposes only.
+    seconds = time.time() - (360) # Deletes files after an hour
 
     if os.path.exists(path):
         #iterating through every file in the path
-        #Idk why it has to be a nested for loop, but whatever.
-        for files in os.walk(path):
-            for file in files:
+        #Array in-case directories or other stuff.
+        for file in [f for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]:
+                file_path = os.path.join(path, file)
                 #Comparing the days & keeping dummy file
-                if seconds > get_file_age(file) and not file.__contains__("dummy"):
-                    remove_file(file)
+                if seconds > get_file_age(file_path) and not file.__contains__("dummy"):
+                    remove_file(file_path)
                     deleted_files_count += 1
                     break
     else:
         print(f'"{path}" is not found')
-
-    print(f"Total files deleted: {deleted_files_count}")
+        
+    if (deleted_files_count > 0):
+        print(f"Total files deleted: {deleted_files_count}")
 
 #Deletes the given file.
 #Similar to del_file in my other folder.
@@ -48,4 +45,6 @@ def get_file_age(path):
     return ctime
 
 if __name__ == '__main__':
-    main()
+    while(True): #Keeps going
+        main()
+        time.sleep(300) #Iterates every 5 minutes
