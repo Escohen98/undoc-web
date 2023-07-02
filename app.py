@@ -35,7 +35,7 @@ def uploaded():
         #Grammar tokenization & highlighting
         with open(c, 'r') as file:  # Open the converted text file
              lines = [natty().run(line.rstrip()) for line in file if line.strip()] # Read lines from the converted text file. Strips new line char
-        file.close()     
+        file.close()
         #converter().delFile(c)  # Delete the converted text file
         # # Deleted the original doc(x) file.
         if platform.system() == "Windows":
@@ -69,24 +69,3 @@ def download(filename):
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337, debug=True)
-
-
-#---------------------- Celery --------------------#
-
-from celery import Celery
-cApp = Celery('tasks', include=['tasks'])
-
-#Monitors activity for file deletion
-#Defines activity time and time threshold for user activity
-@cApp.task
-def monitor_user_activity():
-    last_activity_time = get_last_activity_time()
-    current_time = get_current_time()
-    idle_threshold = 30  # Define the idle threshold in seconds (e.g., 5 minutes)
-    print('Deleting' + docx_name + '...')
-    if current_time - last_activity_time > idle_threshold:
-        path = '../static/downloads/'
-        if (docx_name != ""):
-            converter().delFile(path + docx_name)  # Implement this function to delete the file
-        if (txt_name != ""):
-            converter.delFile(path + txt_name)
