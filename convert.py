@@ -1,6 +1,7 @@
 import os
 import zipfile
 import subprocess
+import shutil, time
 import xml.etree.ElementTree as ET
 from bs4 import BeautifulSoup
 
@@ -51,4 +52,7 @@ class converter():
 
     #Helper function to delete file.
     def delFile(self, path):
-        os.remove(path)
+        try:
+            os.remove(path)
+        except:
+            print("Something went wrong..")

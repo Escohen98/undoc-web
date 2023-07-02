@@ -35,6 +35,7 @@ def uploaded():
         #Grammar tokenization & highlighting
         with open(c, 'r') as file:  # Open the converted text file
              lines = [natty().run(line.rstrip()) for line in file if line.strip()] # Read lines from the converted text file. Strips new line char
+        file.close()     
         #converter().delFile(c)  # Delete the converted text file
         # # Deleted the original doc(x) file.
         if platform.system() == "Windows":
@@ -56,7 +57,13 @@ def download(filename):
     if filename.__contains__("//"):
         filename = filename.split("//")[len(filename.split("//"))-1]
     elif filename.__contains__("\\"):
-        filename.split("\\")[len(filename.split("\\"))-1]
+        filename = filename.split("\\")[len(filename.split("\\"))-1]
+    if (not os.path.isfile(filename)): #Makes sure to check if file exists
+        g = open(filename + '.txt', 'w')
+        #Thought this might be funny.
+        g.write("I'm sorry, but your file doesn't exist 😢")
+        g.close()
+        return
     print(f'Attempting to send: {filename}')
     return send_from_directory(directory='static/downloads/', path=filename, as_attachment=True)
 
