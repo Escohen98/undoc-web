@@ -51,8 +51,8 @@
         // Add mousemove event listener to each span
         spans[i].addEventListener('mousemove', function(event) {
             // Position the tooltip
-            tooltip.style.left = (event.screenX - 200) + 'px';
-            tooltip.style.top = (event.screenY - 100) + 'px';
+            tooltip.style.left = (event.screenX - 240) + 'px';
+            tooltip.style.top = (event.screenY - 150) + 'px';
         });
 
         spans[i].addEventListener('mouseout', function(event) {
