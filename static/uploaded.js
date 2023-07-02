@@ -25,41 +25,49 @@
   }
 
   //Found this online. Lost the link.
-  //Creates a tooltip for the spans
-  function buildToolTip() {
-    var spans = document.getElementsByTagName('span');
-    var tooltip = document.createElement('div');
-    tooltip.style.display = 'none';
-    tooltip.style.position = 'fixed';
-    tooltip.style.background = '#eee';
-    tooltip.style.border = '1px solid #333';
-    tooltip.style.padding = '5px';
-    tooltip.style.zIndex = '1000';
-    document.body.appendChild(tooltip);
+   //Creates a tooltip for the spans
+   function buildToolTip() {
+       var spans = document.getElementsByTagName('span');
 
-    for(var i=0; i<spans.length; i++) {
-        spans[i].addEventListener('mouseover', function(event) {
-            var tag = this.className;
-            var description = getDescription(tag);
-            tooltip.innerHTML = this.innerHTML + ': ' + description;
-            tooltip.style.display = 'block';
-            // The following two lines have been commented out
-            //tooltip.style.left = (event.pageX + this.offsetWidth) + 'px';
-            //tooltip.style.top = (event.pageY + this.offsetHeight) + 'px';
-        });
+       for (var i = 0; i < spans.length; i++) {
+           var span = spans[i];
+           var tooltip = createTooltip();
 
-        // Add mousemove event listener to each span
-        spans[i].addEventListener('mousemove', function(event) {
-            // Position the tooltip
-            tooltip.style.left = (event.screenX - 240) + 'px';
-            tooltip.style.top = (event.screenY - 150) + 'px';
-        });
+           span.addEventListener('mouseover', function(event) {
+               var tag = this.className;
+               var description = getDescription(tag);
+               tooltip.innerHTML = this.innerHTML + ': ' + description;
+               tooltip.style.display = 'block';
+               positionTooltip(tooltip, event.clientX, event.clientY);
+           });
 
-        spans[i].addEventListener('mouseout', function(event) {
-            tooltip.style.display = 'none';
-        });
-    }
-}
+           span.addEventListener('mousemove', function(event) {
+               positionTooltip(tooltip, event.clientX, event.clientY);
+           });
+
+           span.addEventListener('mouseout', function(event) {
+               tooltip.style.display = 'none';
+           });
+
+           span.appendChild(tooltip);
+       }
+   }
+
+   function createTooltip() {
+       var tooltip = document.createElement('div');
+       tooltip.style.display = 'none';
+       tooltip.style.position = 'fixed';
+       tooltip.style.background = '#eee';
+       tooltip.style.border = '1px solid #333';
+       tooltip.style.padding = '5px';
+       tooltip.style.zIndex = '1000';
+       return tooltip;
+   }
+
+   function positionTooltip(tooltip, clientX, clientY) {
+       tooltip.style.left = (clientX + 10) + 'px'; // Adjust the left position as needed
+       tooltip.style.top = (clientY + 10) + 'px'; // Adjust the top position as needed
+   }
 
   /*
    * Get each word description.
