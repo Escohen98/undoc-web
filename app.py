@@ -59,13 +59,13 @@ def download(filename):
     elif filename.__contains__("\\"):
         filename = filename.split("\\")[len(filename.split("\\"))-1]
     if (not os.path.isfile(filename)): #Makes sure to check if file exists
-        g = open(filename + '.txt', 'w')
+        g = open("./static/downloads/" + filename, 'w')
         #Thought this might be funny.
         g.write("I'm sorry, but your file doesn't exist 😢")
-        g.close()
+        g.close()   
         return
     print(f'Attempting to send: {filename}')
     return send_from_directory(directory='static/downloads/', path=filename, as_attachment=True)
-    
+
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
