@@ -46,7 +46,7 @@ def uploaded():
         txt_name = filename #For celery. May remove later
         print("docx filename: " + f.filename)
         docx_name = f.filename #Also for celery. May also remove later.
-        response = render_template('./uploaded.html', file=lines, filename=filename, fileName=filename)
+        response = render_template('./uploaded.html', file=lines, filename=filename, fileName=filename.split(".txt")[0])
         #filepath = "/static/download/"+f.filename
         converter().delFile(filepath)
     return response
@@ -65,7 +65,7 @@ def download(filename):
             f.write("I'm sorry, but your file doesn't exist 😢")
 
         # Return the placeholder file
-        return send_from_directory(directory='static/downloads', path=filename + '.txt', as_attachment=True)
+        return send_from_directory(directory='static/downloads', path=filename, as_attachment=True)
 
     # File exists, return the actual file
     return send_from_directory(directory='static/downloads', path=filename, as_attachment=True)
