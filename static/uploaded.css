@@ -32,6 +32,7 @@ h3 {
 
 img {
   height: 50px;
+  border-radius: 50%;
 }
 
 img:hover {
@@ -80,7 +81,7 @@ img:hover {
 #key-button {
   width: 150px;
   height: 105px;
-  z-index: 2;
+  z-index: 0;
   position: relative;
 }
 
