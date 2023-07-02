@@ -52,20 +52,23 @@ def uploaded():
     return response
 
 #File download handler
+import os
+
 @app.route('/download/<filename>')
 def download(filename):
-    if filename.__contains__("//"):
-        filename = filename.split("//")[len(filename.split("//"))-1]
-    elif filename.__contains__("\\"):
-        filename = filename.split("\\")[len(filename.split("\\"))-1]
-    if (not os.path.isfile(filename)): #Makes sure to check if file exists
-        g = open(filename + '.txt', 'w')
-        #Thought this might be funny.
-        g.write("I'm sorry, but your file doesn't exist 😢")
-        g.close()
-        return
-    print(f'Attempting to send: {filename}')
-    return send_from_directory(directory='static/downloads/', path=filename, as_attachment=True)
+    # Get the full path to the file
+    filepath = os.path.join('static', 'downloads', filename)
+
+    if not os.path.isfile(filepath):
+        # File does not exist, create a placeholder file
+        with open(filepath + '.txt', 'w') as f:
+            f.write("I'm sorry, but your file doesn't exist 😢")
+
+        # Return the placeholder file
+        return send_from_directory(directory='static/downloads', path=filename + '.txt', as_attachment=True)
+
+    # File exists, return the actual file
+    return send_from_directory(directory='static/downloads', path=filename, as_attachment=True)
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000, debug=True)
