@@ -68,4 +68,4 @@ def download(filename):
     return send_from_directory(directory='static/downloads/', path=filename, as_attachment=True)
 
 if __name__ == "__main__":
-    app.run(ssl_context=('cert.pem', 'key.pem'), host='0.0.0.0', port=443, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
