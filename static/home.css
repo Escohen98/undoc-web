@@ -23,8 +23,8 @@ form {
   flex-direction: column;
   justify-content: center;
   border: inset black 1px;
-  width: 300px;
-  height: 300px;
+  width: 325px;
+  height: 325px;
   padding: 5px 0;
   background-color: purple;
   border-radius: 50%;
@@ -54,4 +54,8 @@ footer > p {
 
 .browse {
     margin-top: 30px;
+}
+
+.select {
+  margin-left: 60px;
 }
