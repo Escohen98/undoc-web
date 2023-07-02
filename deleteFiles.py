@@ -2,67 +2,50 @@
 #I don't want your dang files. Go away.
 #Adapted from https://geekflare.com/python-delete-files/
 
-# importing the required modules
-import os
-import shutil
-import time
+import os, shutil, time
 
-# main function
 def main():
+    deleted_files_count = 0
+    path = os.getcwd() + "/static/downloads"
 
-	# initializing the count
-	deleted_files_count = 0
+    #3 hours
+    days = 0.125
 
-	# specify the path
-	path = os.getcwd() + "/static/downloads/"
+    # converting days to seconds
+    # time.time() is in seconds
+    # Could change days to hours and not multiply by 24, but eh
+    #seconds = time.time() - (days * 24 * 60 * 60)
+    seconds = time.time() - 30 #Testing purposes only.
 
-	# 3 hours
-	days = 0.125
-
-	# converting days to seconds
-	# time.time() returns current time in seconds
-    #Could change days to hours and not multiply by 24, but eh
-	#seconds = time.time() - (days * 24 * 60 * 60)
-    seconds = time.time() - 30 #Test on a 30 second interval
-	# checking whether the file is present in path or not
-	if os.path.exists(path):
-		# iterating over each and every folder and file in the path
-		for files in os.walk(path):
+    if os.path.exists(path):
+        #iterating through every file in the path
+        #Idk why it has to be a nested for loop, but whatever.
+        for files in os.walk(path):
             for file in files:
-    			# comparing the days & keeping dummy file 
-    			if seconds >= get_file_or_folder_age(file) && file.filename != "dummy":
-    				# removing the folder
-    				remove_file(root_folder)
-    				deleted_files_count += 1 # incrementing count
-    				break
-	else:
+                #Comparing the days & keeping dummy file
+                if seconds > get_file_age(file) && file.filename != "dummy":
+                    remove_file(root_folder)
+                    deleted_files_count += 1
+                    break
+    else:
+        print(f'"{path}" is not found')
 
-		# file/folder is not found
-		print(f'"{path}" is not found')
-		deleted_files_count += 1 # incrementing count
+    print(f"Total files deleted: {deleted_files_count}")
 
-	print(f"Total files deleted: {deleted_files_count}")
-
-
-
+#Deletes the given file.
+#Similar to del_file in my other folder.
 def remove_file(path):
-	# removing the file
-	if not os.remove(path):
-		# success message
-		print(f"{path} is removed successfully")
+    if not os.remove(path):
+        print(f"{path} is removed successfully")
+    else:
+        print(f"Unable to delete the {path}")
 
-	else:
-		# failure message
-		print(f"Unable to delete the {path}")
+#Gets how long the file has existed
+def get_file_age(path):
+    #Getting ctime of the file
+    #Time is in seconds
+    ctime = os.stat(path).st_ctime
+    return ctime
 
-
-def get_file_or_folder_age(path):
-	# getting ctime of the file/folder
-	# time will be in seconds
-	ctime = os.stat(path).st_ctime
-	# returning the time
-	return ctime
-
-
-if __name__ == '__main__':
-	main()
+if __name__ = '__main__':
+    main()
