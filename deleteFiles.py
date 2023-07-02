@@ -23,8 +23,8 @@ def main():
         for files in os.walk(path):
             for file in files:
                 #Comparing the days & keeping dummy file
-                if seconds > get_file_age(file) && file.filename != "dummy":
-                    remove_file(root_folder)
+                if seconds > get_file_age(file) and not file.__contains__("dummy"):
+                    remove_file(file)
                     deleted_files_count += 1
                     break
     else:
@@ -47,5 +47,5 @@ def get_file_age(path):
     ctime = os.stat(path).st_ctime
     return ctime
 
-if __name__ = '__main__':
+if __name__ == '__main__':
     main()
