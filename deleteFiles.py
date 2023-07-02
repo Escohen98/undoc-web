@@ -25,7 +25,7 @@ def main():
                     break
     else:
         print(f'"{path}" is not found')
-        
+
     if (deleted_files_count > 0):
         print(f"Total files deleted: {deleted_files_count}")
 
@@ -45,6 +45,7 @@ def get_file_age(path):
     return ctime
 
 if __name__ == '__main__':
+    print("Starting...")
     while(True): #Keeps going
         main()
         time.sleep(300) #Iterates every 5 minutes
