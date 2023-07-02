@@ -34,7 +34,22 @@ form {
 
 form:hover {
   opacity: .9;
-  background-color: white
+  background-color: white;
+}
+
+footer {
+  background-color: linear-gradient(to bottom right, purple, black);
+  height: 100px;
+  width: 100%;
+  font-size: 8px;
+  position: relative;
+}
+
+footer > p {
+  color: white;
+  position: absolute;
+  left: 0;
+  bottom: 0;
 }
 
 .browse {
