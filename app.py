@@ -3,7 +3,6 @@
 #Copyright © Eric Cohen 2023
 
 from flask import Flask, render_template, request, url_for, redirect, send_from_directory
-from flask_sslify import SSLify
 from distutils.log import debug
 from fileinput import filename
 from convert import converter
@@ -11,9 +10,6 @@ from nlp import natty
 import os, platform
 
 app = Flask(__name__)
-sslify = SSLify(app) #Redirects http to https. Apparently doesn't work.
-docx_name = ""
-txt_name = ""
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('./home.html')
@@ -25,8 +21,9 @@ def uploaded():
     if request.method == 'POST':
         print("Post request")
         f=request.files['file-txt']
-        filepath = os.path.join('static', 'downloads', f.filename)
-        print("original filename: " + f.filename)
+        basename = os.path.basename(f.filename) #Prevents injections
+        filepath = os.path.join('static', 'downloads', basename)
+        print("original filename: " + basename)
         print("saving...")
         f.save(filepath)
         print("saved.")
@@ -38,14 +35,9 @@ def uploaded():
         file.close()
         #converter().delFile(c)  # Delete the converted text file
         # # Deleted the original doc(x) file.
-        if platform.system() == "Windows":
-            filename = c.split("\\")[len(c.split("\\"))-1]
-        else:
-            filename = c.split("/")[len(c.split("/"))-1]
-        print("txt filename: " + c)
-        txt_name = filename #For celery. May remove later
-        print("docx filename: " + f.filename)
-        docx_name = f.filename #Also for celery. May also remove later.
+        filename = os.path.basename(c)
+        print("txt filename: " + filename)
+        print("docx filename: " + basename)
         response = render_template('./uploaded.html', file=lines, filename=filename, fileName=filename.split(".txt")[0])
         #filepath = "/static/download/"+f.filename
         converter().delFile(filepath)
