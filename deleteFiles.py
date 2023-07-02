@@ -11,7 +11,7 @@ def main():
     # converting days to seconds
     # time.time() is in seconds
     # Could change days to hours and not multiply by 24, but eh
-    seconds = time.time() - (360) # Deletes files after an hour
+    seconds = time.time() - 180 # Deletes files after 30 minutes
 
     if os.path.exists(path):
         #iterating through every file in the path
