@@ -10,9 +10,16 @@ from nlp import natty
 import os, platform
 
 app = Flask(__name__)
+
+#Home page
 @app.route('/', methods=['GET', 'POST'])
 def home():
     return render_template('./home.html')
+
+#Get out
+@app.route('/nice', methods=['GET', 'POST'])
+def nice():
+    return render_template('./nice.html')
 
 #New page to handle the file upload / convert.
 #Also going to display file on webpage.
@@ -21,6 +28,9 @@ def uploaded():
     if request.method == 'POST':
         print("Post request")
         f=request.files['file-txt']
+        #Booting hackers
+        if(f.filename.__contains__("../") or f.filename.__contains__("\\\\")):
+            redirect('https://www.youtube.com/watch?v=dQw4w9WgXcQ', code=302)
         basename = os.path.basename(f.filename) #Prevents injections
         filepath = os.path.join('static', 'downloads', basename)
         print("original filename: " + basename)
