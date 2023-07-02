@@ -67,11 +67,5 @@ def download(filename):
     print(f'Attempting to send: {filename}')
     return send_from_directory(directory='static/downloads/', path=filename, as_attachment=True)
 
-#Apparently this can change the icon.
-@app.route('/favicon.ico')
-def favicon():
-    return send_from_directory(os.path.join(app.root_path, 'static'),
-    'favicon.ico',mimetype='image/vnd.microsoft.icon')
-
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=1337, debug=True)
