@@ -1,6 +1,6 @@
 Copyright © Eric Cohen 2023
 
-![HackMD](https://hackmd.io/oekEl2Q3T1-Cir-WtcJVTAhttps://hackmd.io/oekEl2Q3T1-Cir-WtcJVTA)
+![HackMD](http://hackmd.io/@ii6AggqyRP2fCcwl00CbIw/mstu5003finals)
 
 ![Weblink](http://docstotxt.net)
 
