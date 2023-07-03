@@ -1,7 +1,7 @@
 Copyright © Eric Cohen 2023
 ![HackMD](https://hackmd.io/oekEl2Q3T1-Cir-WtcJVTAhttps://hackmd.io/oekEl2Q3T1-Cir-WtcJVTA)
 
-![Weblink](http://docxtotxt.net)
+![Weblink](http://docstotxt.net)
 
 # Description
 A Docx -> TXT converter while implementing NLP to grammatically categorize the text and identify and visualize through colors and tooltips what type of grammatical category the word falls under.
